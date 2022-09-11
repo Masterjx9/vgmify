@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+        const eurrate = "{{ bitcoindata.bpi.EUR.rate }}".replace(/,/g, '')
+        const gbprate = "{{ bitcoindata.bpi.GBP.rate }}".replace(/,/g, '')
+        const usdrate = "{{ bitcoindata.bpi.USD.rate }}".replace(/,/g, '')
+    </script>
+    <script src="{{ url_for('static', filename='js/bitcoinchart.js') }}" crossorigin="anonymous" defer></script>
+    <script src="{{ url_for('static', filename='js/googlemaps.js') }}" crossorigin="anonymous" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://www.codeimmersives.com/wp-content/uploads/2019/09/cropped-CodeImmersives_Logo_RGB_NYC_BW-3.png" alt="Code Immersives" style="max-height: 200px;">
+    <div>
+        <canvas id="myChart" style="max-height: 200px;"></canvas>
+    </div>
+    <div id="googlediv">
+
+    </div>
+</body>
+</html>
