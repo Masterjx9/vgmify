@@ -54,7 +54,7 @@ jobs:
         # (Optional, default: "./")
         # Dockerfile directory.
         # For example, if you have a Dockerfile in the root of your project, leave it as follows:
-        dockerfile_directory: /app/
+        dockerfile_directory: /app
 
         # (Optional, default: "Dockerfile")
         # Dockerfile name.
