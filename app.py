@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, session, flash, redirect, url_for
 import os
+os.environ.get("PORT")
+print(os.environ["PORT"])
 # from flask_wtf import FlaskForm
 # from wtforms import StringField, SubmitField
 # from wtforms.validators import DataRequired
@@ -120,7 +122,7 @@ def hello():
 #         return iplookupregion
 
 
-
+print(os.environ.get("PORT"))
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=os.environ.get("PORT"), threaded=True)
 
