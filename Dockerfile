@@ -9,6 +9,8 @@ RUN apt-get update && pip install --upgrade pip && pip install -r requirements.t
 
 COPY . /app
 
+RUN pip freeze
+RUN printenv
 CMD ["python", "app.py"]
 # SHELL ["/bin/bash", "-c"]
 
