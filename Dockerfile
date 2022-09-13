@@ -9,7 +9,7 @@ RUN apt-get update && pip install --upgrade pip && pip install -r requirements.t
 
 COPY . /app
 
-# CMD ["python", "app.py"]
-SHELL ["/bin/bash", "-c"]
+CMD ["python", "app.py"]
+# SHELL ["/bin/bash", "-c"]
 
 # export DOCKER_DEFAULT_PLATFORM=linux/amd64
