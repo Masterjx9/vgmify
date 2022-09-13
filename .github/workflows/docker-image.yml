@@ -34,6 +34,10 @@ jobs:
 #         push: ${{ github.ref == 'refs/heads/main' }}
 ### ⬇ IMPORTANT PART ⬇ ###
 
+# Check-out your repository.
+    - name: Checkout
+      uses: actions/checkout@v2
+        
     - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
       uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
       with:
@@ -54,7 +58,7 @@ jobs:
         # (Optional, default: "./")
         # Dockerfile directory.
         # For example, if you have a Dockerfile in the root of your project, leave it as follows:
-        dockerfile_directory: /app
+        dockerfile_directory: ..
 
         # (Optional, default: "Dockerfile")
         # Dockerfile name.
