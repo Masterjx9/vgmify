@@ -1,16 +1,6 @@
 from flask import Flask, render_template, request, session, flash, redirect, url_for
 import os
-os.environ.get("PORT")
-print(os.environ["PORT"])
-# from flask_wtf import FlaskForm
-# from wtforms import StringField, SubmitField
-# from wtforms.validators import DataRequired
-# from werkzeug.security import generate_password_hash, check_password_hash
-# from datetime import datetime
-# from flask_login import LoginManager, UserMixin, login_user
-# from flask_sqlalchemy import SQLAlchemy
-# from webforms import LoginForm,  NamerForm #, PostForm, UserForm, PasswordForm
-# import requests
+
 
 # setting variables
 
@@ -122,7 +112,6 @@ def hello():
 #         return iplookupregion
 
 
-print(os.environ.get("PORT"))
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=os.environ.get("PORT"), threaded=True)
+    app.run(host="0.0.0.0", port=os.environ["PORT"], threaded=True)
 
