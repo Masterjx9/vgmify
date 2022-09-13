@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, flash, redirect, url_for
-print("trying to import flask_wtf")
+import os
 # from flask_wtf import FlaskForm
 # from wtforms import StringField, SubmitField
 # from wtforms.validators import DataRequired
@@ -122,5 +122,5 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, threaded=True)
+    app.run(host="0.0.0.0", port=os.environ.get("PORT"), threaded=True)
 
