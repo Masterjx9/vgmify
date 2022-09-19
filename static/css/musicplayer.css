@@ -1,7 +1,6 @@
 *{
 	margin: 0;
 	padding: 0;
-	font-family: cursive;
 }
 body{
 	min-height: 100vh;
@@ -150,12 +149,15 @@ input[type="range"]::-webkit-slider-thumb{
 	width: 80%;
 	overflow: hidden;
 	margin-bottom: 6.5em;
-/*	border: 1px solid #fff;*/
+	color: #148f77;
+	letter-spacing: 1px;
+	font-family: Impact;
 }
 .song_detail #title{
 	text-transform: capitalize;
 	color: #fff;
 	font-size: 35px;
+	font-family: 1px;
 }
 .song_detail #artist{
 	text-transform: capitalize;

@@ -98,14 +98,14 @@ function load_track(index_no,checker){
 	reset_slider();
 
 	track.src = All_song[index_no].path;
-	title.innerHTML = All_song[index_no].name;	
+	title.innerHTML = "Title: "+All_song[index_no].name;	
 	track_image.src = All_song[index_no].img;
 	track_image.style.cssText += "object-fit: contain;"
-    artist.innerHTML = All_song[index_no].artists;
-	album.innerHTML = All_song[index_no].album;
-	platform.innerHTML = All_song[index_no].platform;
-	year.innerHTML = All_song[index_no].year;
-	genre.innerHTML = All_song[index_no].genre;
+    artist.innerHTML = "Artists: "+All_song[index_no].artists;
+	album.innerHTML = "Game: "+All_song[index_no].album;
+	platform.innerHTML = "Console/Platform: "+All_song[index_no].platform;
+	year.innerHTML = "Year: "+All_song[index_no].year;
+	genre.innerHTML = "Genre: "+All_song[index_no].genre;
     track.load();
 
 	timer = setInterval(range_slider ,1000);
@@ -222,12 +222,10 @@ function range_slider(){
        // function will run when the song is over
        if(track.ended){
        	 play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-			load_track(index_no);
-			playsong();
-        //    if(autoplay==1){
-		//        index_no += 1;
-		//        load_track(index_no);
-		//        playsong();
-        //    }
+			// load_track(index_no);
+			// playsong();
+           if(autoplay==1){
+			load_track(index_no,checker="next_song")
+           }
 	    }
      }

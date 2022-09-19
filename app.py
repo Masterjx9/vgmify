@@ -107,7 +107,7 @@ class musicimages(db.Model):
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return redirect("vgmplayer")
 
 @app.route('/grvgm', methods=['GET'])
 def grvgm():
@@ -140,20 +140,6 @@ def grvgm():
 @app.route('/vgmplayer')
 def vgmplayer():
 	return render_template("musicplayer.html")
-    
-
-# @app.route('/iplookup', methods=['POST'])
-# def iplookup():
-#     if request.method == 'POST':
-#         request_json = request.json
-#         iplocadata = requests.get("https://freegeoip.app/json/"+str(request_json["ipaddress"])+"?apikey=cf036630-351d-11ec-bd19-7d45ee7e599d").json()
-#         googlemaplink = "https://maps.google.com/maps?q=loc:"+str(iplocadata["latitude"])+"+"+str(iplocadata["longitude"])+"&t=&z=8&ie=UTF8&iwloc=&output=embed"
-#         print(googlemaplink)
-#         iplookupregion = {
-#             "mapinfo":googlemaplink
-#         }
-#         return iplookupregion
-
 
 
 if __name__ == "__main__":
