@@ -12,6 +12,9 @@ let present = document.querySelector('#present');
 let total = document.querySelector('#total');
 let artist = document.querySelector('#artist');
 let album = document.getElementById("album");
+let platform = document.getElementById("platform");
+let genre = document.getElementById("genre");
+let year = document.getElementById("year");
 
 
 
@@ -26,65 +29,97 @@ let track = document.createElement('audio');
 
 
 //All songs list
-let All_song = [
-   {
-     name: "Sewer Dungeon",
-     path: "https://vgmsite.com/soundtracks/yakuza-like-a-dragon-unofficial-original-soundtrack-2020/vdyvhloczr/1-08.%20Sewer%20Dungeon.mp3",
-     img: "https://vgmsite.com/soundtracks/yakuza-like-a-dragon-unofficial-original-soundtrack-2020/1-Cover.jpg",
-     singer: "1",
-	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)"
-   },
-   {
-     name: "second song",
-     path: "2.mp3",
-     img: "img2.jpg",
-     singer: "2",
-	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)"
-   },
-   {
-     name: "third song",
-     path: "3.mp3",
-     img: "img3.jpg",
-     singer: "3",
-	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)"
-   },
-   {
-     name: "fourth song",
-     path: "4.mp3",
-     img: "img4.jpg",
-     singer: "4"
-   },
-   {
-     name: "fifth song",
-     path: "5.mp3",
-     img: "img5.jpg",
-     singer: "5",
-	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)"
-   }
-];
+// let All_song = [
+//    {
+//      name: "Sewer Dungeon",
+//      path: "https://vgmsite.com/soundtracks/yakuza-like-a-dragon-unofficial-original-soundtrack-2020/vdyvhloczr/1-08.%20Sewer%20Dungeon.mp3",
+//      img: "https://vgmsite.com/soundtracks/yakuza-like-a-dragon-unofficial-original-soundtrack-2020/1-Cover.jpg",
+// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
+// 	 artists: "test",
+// 	 platform: "test",
+// 	 year: "test",
+// 	 genre: "test"
+//    },
+//    {
+//      name: "second song",
+//      path: "2.mp3",
+//      img: "img2.jpg",
+// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
+// 	 artists: "test",
+// 	 platform: "test",
+// 	 year: "test",
+// 	 genre: "test"
+//    },
+//    {
+//      name: "third song",
+//      path: "3.mp3",
+//      img: "img3.jpg",
+// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
+// 	 artists: "test",
+// 	 platform: "test",
+// 	 year: "test",
+// 	 genre: "test"
+//    },
+//    {
+//      name: "fourth song",
+//      path: "4.mp3",
+//      img: "img4.jpg",
+// 	 artists: "test",
+// 	 platform: "test",
+// 	 year: "test",
+// 	 genre: "test"
+//    },
+//    {
+//      name: "fifth song",
+//      path: "5.mp3",
+//      img: "img5.jpg",
+// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
+// 	 artists: "test",
+// 	 platform: "test",
+// 	 year: "test",
+// 	 genre: "test"
+//    }
+// ];
+
+
 
 
 // All functions
 
 
 // function load the track
-function load_track(index_no){
+function load_track(index_no,checker){
+	fetch('/grvgm')
+	.then(response => response.json())
+	.then(All_song => {
+		console.log(All_song)
+
 	clearInterval(timer);
 	reset_slider();
 
 	track.src = All_song[index_no].path;
 	title.innerHTML = All_song[index_no].name;	
 	track_image.src = All_song[index_no].img;
-    artist.innerHTML = All_song[index_no].singer;
+	track_image.style.cssText += "object-fit: contain;"
+    artist.innerHTML = All_song[index_no].artists;
 	album.innerHTML = All_song[index_no].album;
+	platform.innerHTML = All_song[index_no].platform;
+	year.innerHTML = All_song[index_no].year;
+	genre.innerHTML = All_song[index_no].genre;
     track.load();
 
 	timer = setInterval(range_slider ,1000);
 	total.innerHTML = All_song.length;
 	present.innerHTML = index_no + 1;
+
+	if (checker == "next_song"){
+		playsong();
+	}
+})
+return;
 }
 
-load_track(index_no);
+load_track(index_no,"initial_load");
 
 
 //mute sound function
@@ -113,6 +148,7 @@ function mute_sound(){
 
 // play song
 function playsong(){
+  console.log(track)
   track.play();
   Playing_song = true;
   play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
@@ -120,6 +156,7 @@ function playsong(){
 
 //pause song
 function pausesong(){
+	console.log(track)
 	track.pause();
 	Playing_song = false;
 	play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
@@ -128,32 +165,24 @@ function pausesong(){
 
 // next song
 function next_song(){
-	if(index_no < All_song.length - 1){
-		index_no += 1;
-		load_track(index_no);
-		playsong();
-	}else{
-		index_no = 0;
-		load_track(index_no);
-		playsong();
+	load_track(index_no,checker="next_song");
+  };
 
-	}
-}
+        
+    
+	
+	// if(index_no < All_song.length - 1){
+	// 	index_no += 1;
+	// 	load_track(index_no);
+	// 	playsong();
+	// }else{
+	// 	index_no = 0;
+	// 	load_track(index_no);
+	// 	playsong();
+
+	// }
 
 
-// previous song
-function previous_song(){
-	if(index_no > 0){
-		index_no -= 1;
-		load_track(index_no);
-		playsong();
-
-	}else{
-		index_no = All_song.length;
-		load_track(index_no);
-		playsong();
-	}
-}
 
 
 // change volume
@@ -193,10 +222,12 @@ function range_slider(){
        // function will run when the song is over
        if(track.ended){
        	 play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-           if(autoplay==1){
-		       index_no += 1;
-		       load_track(index_no);
-		       playsong();
-           }
+			load_track(index_no);
+			playsong();
+        //    if(autoplay==1){
+		//        index_no += 1;
+		//        load_track(index_no);
+		//        playsong();
+        //    }
 	    }
      }

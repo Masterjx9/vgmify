@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/musicplayer.css') }}">
+    
     <script src="{{ url_for('static', filename='js/musicplayer.js') }}" defer></script>
 </head>
 
@@ -41,11 +42,14 @@
            <p id="title">title.mp3</p>
            <p id="artist">Artist name</p>
            <p id="album">Album name</p>
+           <p id="platform">Platform</p>
+           <p id="year">Year</p>
+           <p id="genre">Genre</p>
        </div>
 
       <!--- middle part --->
   	 	<div class="middle">
-  	       <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+  	    
       	   <button onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
   	       <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
   	   </div>
@@ -65,4 +69,5 @@
 
 
 </body>
+
 </html>
