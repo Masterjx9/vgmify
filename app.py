@@ -109,6 +109,7 @@ class musicimages(db.Model):
 def hello():
     return redirect("vgmplayer")
 
+
 @app.route('/grvgm', methods=['GET'])
 def grvgm():
 	musicdata = music.query.order_by(func.random()).first()

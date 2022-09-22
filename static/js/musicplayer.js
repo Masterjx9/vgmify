@@ -28,61 +28,6 @@ let Playing_song = false;
 let track = document.createElement('audio');
 
 
-//All songs list
-// let All_song = [
-//    {
-//      name: "Sewer Dungeon",
-//      path: "https://vgmsite.com/soundtracks/yakuza-like-a-dragon-unofficial-original-soundtrack-2020/vdyvhloczr/1-08.%20Sewer%20Dungeon.mp3",
-//      img: "https://vgmsite.com/soundtracks/yakuza-like-a-dragon-unofficial-original-soundtrack-2020/1-Cover.jpg",
-// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
-// 	 artists: "test",
-// 	 platform: "test",
-// 	 year: "test",
-// 	 genre: "test"
-//    },
-//    {
-//      name: "second song",
-//      path: "2.mp3",
-//      img: "img2.jpg",
-// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
-// 	 artists: "test",
-// 	 platform: "test",
-// 	 year: "test",
-// 	 genre: "test"
-//    },
-//    {
-//      name: "third song",
-//      path: "3.mp3",
-//      img: "img3.jpg",
-// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
-// 	 artists: "test",
-// 	 platform: "test",
-// 	 year: "test",
-// 	 genre: "test"
-//    },
-//    {
-//      name: "fourth song",
-//      path: "4.mp3",
-//      img: "img4.jpg",
-// 	 artists: "test",
-// 	 platform: "test",
-// 	 year: "test",
-// 	 genre: "test"
-//    },
-//    {
-//      name: "fifth song",
-//      path: "5.mp3",
-//      img: "img5.jpg",
-// 	 album: "Yakuza Like A Dragon Unofficial Original Soundtrack (PS4, PS5) (2020)",
-// 	 artists: "test",
-// 	 platform: "test",
-// 	 year: "test",
-// 	 genre: "test"
-//    }
-// ];
-
-
-
 
 // All functions
 
