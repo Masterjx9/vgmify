@@ -1,27 +1,47 @@
-name: Push Container to Heroku
 
-on: 
+
+name: Fly Deploy
+on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  deploy:
+    name: Deploy app
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Login to Heroku Container registry
-      env: 
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:login 
-    - name: Build and push
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
-    - name: Release
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+
+# OLD PROCESS WHEN HEROKU WAS FREE. ALSO SOME RANDOM OLD THAT CAN BE DELETED. 
+# name: Push Container to Heroku
+
+# on: 
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Login to Heroku Container registry
+#       env: 
+#         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku container:login 
+#     - name: Build and push
+#       env:
+#         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
+#     - name: Release
+#       env:
+#         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#       run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
 
 # name: Docker Image CI
 

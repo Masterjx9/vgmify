@@ -15,3 +15,6 @@ CMD ["python", "app.py"]
 # SHELL ["/bin/bash", "-c"]
 
 # export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# some code that could be useful for running docker with volume locally for testing
+# docker run -p 5000:5000 -v C:\Users\RKerrigan\Scripts\pirate:/app --name mysockettest -t sockettest

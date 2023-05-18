@@ -112,7 +112,10 @@ def hello():
 
 @app.route('/grvgm', methods=['GET'])
 def grvgm():
+    # 1. Grab music from database by random. Grab the first instance
 	musicdata = music.query.order_by(func.random()).first()
+	# 2. grab music images by the specific music that was first grabbed from the first query
+	# Note: If there isn't any image for the music, use the generic music icon
 	musicimgdata = musicimages.query.filter_by(gamealbum = musicdata.gamealbum).order_by(func.random()).first()
 	if musicimgdata == None:
 		musicimgdata = "https://media.idownloadblog.com/wp-content/uploads/2018/03/Apple-Music-icon-003.jpg"
@@ -124,6 +127,7 @@ def grvgm():
 		print(musicimgdata.gameart)
 		musicimgdata = musicimgdata.gameart
 
+	# Create music information object to be sent to the front end
 	musicobject = [{
 	"name": musicdata.gametrackname,
      "path": musicdata.gamelink,
@@ -144,6 +148,7 @@ def vgmplayer():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=os.environ["PORT"], threaded=True)
+    app.run(host="0.0.0.0", threaded=True)
+    # app.run(host="0.0.0.0", port=os.environ["PORT"], threaded=True)
 	# app.run()
 
