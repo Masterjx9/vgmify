@@ -1,10 +1,9 @@
 
-
 name: Fly Deploy
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy:
     name: Deploy app
@@ -15,7 +14,6 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
 
 # OLD PROCESS WHEN HEROKU WAS FREE. ALSO SOME RANDOM OLD THAT CAN BE DELETED. 
 # name: Push Container to Heroku
